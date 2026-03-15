@@ -15,7 +15,6 @@ index=wineventlog EventCode=4625 OR EventCode=4624
 ## 2. Monitorização de PowerShell Suspeito (Base64)
 Deteta o uso de comandos codificados para ocultar atividades maliciosas no sistema.
 
-Snippet de código
 index=os_logs process_name=powershell.exe
 | search command="*-encodedcommand*" OR command="* -enc *"
 | stats count by host, user, command
@@ -23,7 +22,6 @@ index=os_logs process_name=powershell.exe
 ## 3. Visualização de Tráfego de Rede (Firewall)
 Query utilizada para mapear a origem geográfica de conexões permitidas.
 
-Snippet de código
 index=firewall action=allowed
 | iplocation src_ip
 | stats count by Country
